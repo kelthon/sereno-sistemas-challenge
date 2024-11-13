@@ -8,7 +8,7 @@ def seamstress_work_distribution(
     distribution = [{part: 0 for part in piece_parts} for st in seamstresses]
 
     for part_name, part_number in piece_parts.items():
-        part_seam_time = 0
+        allocation = 0
         
         seamstresses.sort(key= lambda seamstress: seamstress[part_name])
 
@@ -17,12 +17,11 @@ def seamstress_work_distribution(
                 break
             
             index = seamstresses.index(seamstress)
-            max_parts = (avaliable_time - part_seam_time) // seamstress[part_name]
+            max_parts = (avaliable_time - allocation) // seamstress[part_name]
             allocation = min(max_parts, part_number)
             distribution[index][part_name] += allocation
             
             part_number -= allocation
-            part_seam_time += allocation * seamstress[part_name]
     
     return distribution
 
@@ -51,9 +50,9 @@ if __name__ == '__main__':
     ]
 
     pieces = {
-        'sleeve': 50,
-        'collar': 50,
-        'button': 50,
+        'sleeve': 150,
+        'collar': 150,
+        'button': 150,
     }
 
     avaliable_time = 180

@@ -1,4 +1,6 @@
 from typing import Dict, List
+from .show import show_distribution
+
 
 def distribute_seamstress_work(
     seamstresses: List[Dict[str, int]],
@@ -30,11 +32,6 @@ def distribute_seamstress_work(
             remaining_parts -= parts_to_allocate
     
     return distribution
-
-def show_distribution(distribution: List[Dict[str, int]]) -> None:
-    for i, allocation in enumerate(distribution):
-        parts_allocated = ', '.join(f'{number} {part}(s)' for part, number in allocation.items())
-        print(f'seamstress {i + 1}: {parts_allocated}')
 
 if __name__ == '__main__':
     seamstresses = [

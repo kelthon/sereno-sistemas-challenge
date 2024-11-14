@@ -1,5 +1,5 @@
 from typing import Dict, List
-from .show import show_distribution
+from show import show_distribution
 
 
 def distribute_seamstress_work(
